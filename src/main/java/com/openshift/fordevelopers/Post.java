@@ -3,9 +3,10 @@ package com.openshift.fordevelopers;
 import java.util.Date;
 import java.util.Objects;
 
-import javax.persistence.Entity;
+//import javax.persistence.Entity;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import jakarta.persistence.Entity;
 
 @Entity
 public class Post extends PanacheEntity {

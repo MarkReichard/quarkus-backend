@@ -8,8 +8,8 @@
   <properties>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <maven.compiler.parameters>true</maven.compiler.parameters>
-    <surefire-plugin.version>2.22.0</surefire-plugin.version>
-    <quarkus.version>1.4.2.Final</quarkus.version>
+    <surefire-plugin.version>3.1.2</surefire-plugin.version>
+    <quarkus.version>3.3.0</quarkus.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>17</maven.compiler.source>
     <compiler-plugin.version>3.8.1</compiler-plugin.version>
@@ -57,6 +57,13 @@
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-resteasy-jsonb</artifactId>
     </dependency>
+    <dependency>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-failsafe-plugin</artifactId>
+      <version>3.1.2</version>
+      <scope>test</scope>
+    </dependency>
+
   </dependencies>
   <build>
     <plugins>
@@ -87,15 +94,15 @@
       </plugin>
       <plugin>
         <artifactId>maven-antrun-plugin</artifactId>
-        <version>1.7</version>
+        <version>3.1.0</version>
         <executions>
           <execution>
             <phase>package</phase>
             <configuration>
-              <tasks>
-                <move file="${project.basedir}/target/${project.build.finalName}-runner.jar" tofile="${project.basedir}/target/${project.build.finalName}.jar" />
+              <target>
+                <!--<move file="${project.basedir}/target/${project.build.finalName}-runner.jar" tofile="${project.basedir}/target/${project.build.finalName}.jar" />-->
                 <delete file="${project.basedir}/target/quarkus-backend-dev.jar" />
-              </tasks>
+              </target>
             </configuration>
             <goals>
               <goal>run</goal>
@@ -132,7 +139,7 @@
           </plugin>
           <plugin>
             <artifactId>maven-failsafe-plugin</artifactId>
-            <version>${surefire-plugin.version}</version>
+            <version>3.1.2</version>
             <executions>
               <execution>
                 <goals>
